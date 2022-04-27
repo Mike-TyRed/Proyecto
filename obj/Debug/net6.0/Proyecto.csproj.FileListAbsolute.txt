@@ -1,0 +1,15 @@
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\Proyecto.exe
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\Proyecto.deps.json
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\Proyecto.runtimeconfig.json
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\Proyecto.dll
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\ref\Proyecto.dll
+C:\Users\Mike\Documents\GitHub\Proyecto\bin\Debug\net6.0\Proyecto.pdb
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.csproj.AssemblyReference.cache
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.AssemblyInfoInputs.cache
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.AssemblyInfo.cs
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.dll
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\ref\Proyecto.dll
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.pdb
+C:\Users\Mike\Documents\GitHub\Proyecto\obj\Debug\net6.0\Proyecto.genruntimeconfig.cache
