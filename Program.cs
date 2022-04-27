@@ -20,25 +20,40 @@ do                                                  //Sistema
     switch (opcion)
     {
         case 1:                                     //Crear base de datos
-        break;
+            CrearBD();
+            break;
 
         case 2:                                     //Borrar base de datos
-        break;
+            break;
 
         case 3:                                     //Mostrar bases de datos
-        break;
+            break;
 
         case 4:                                     //Usar base de datos
-        break;
+            break;
 
         case 5:                                     //Finalizar programa
-        break;
-        
+            break;
+
         default:
             Console.Clear();
             Console.WriteLine("Opción no válida");
             Console.WriteLine();
-        break;
+            break;
     }
 } while (opcion != 5);
 
+static void CrearBD()
+{
+    Console.Write("Ingresa el nombre de la base de datos: ");
+    string name = Console.ReadLine();
+
+    string path = @"C:\Users\Mike\Documents\GitHub\Proyecto\" + name;
+
+    if (!Directory.Exists(path))
+    {
+        Directory.CreateDirectory(path);
+        Console.WriteLine("Base de datos" + name + "creada");
+        Console.ReadLine();
+    }
+}
