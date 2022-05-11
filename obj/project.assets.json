@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mike\\Documents\\GitHub\\Proyecto\\Proyecto.csproj",
-      "projectName": "Proyecto",
-      "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\Proyecto\\Proyecto.csproj",
+      "projectUniqueName": "C:\\Users\\Mike\\Documents\\GitHub\\simuadb\\simubd.csproj",
+      "projectName": "simubd",
+      "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\simuadb\\simubd.csproj",
       "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mike\\Documents\\GitHub\\Proyecto\\obj\\",
+      "outputPath": "C:\\Users\\Mike\\Documents\\GitHub\\simuadb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config"

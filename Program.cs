@@ -1,75 +1,179 @@
-﻿Console.Clear();
-
-int opcion = 0;
-do                                                  //Sistema
+﻿string comando = " ";
+do
 {
-    Console.WriteLine("----Menu de acciones-----");
-    Console.WriteLine("[1] Crear nueva B.D");
-    Console.WriteLine("[2] Borrar B.D existente");
-    Console.WriteLine("[3] Muestra todas las B.D");
-    Console.WriteLine("[4] Usar B.D existente");
-    Console.WriteLine("[5] Finalizar programa");
-
-    Console.WriteLine();
-
-    Console.Write("Ingrese una opción: ");
-    opcion = int.Parse(Console.ReadLine());
-
+    List<Formato> filas = new List<Formato>();
     Console.Clear();
 
-    switch (opcion)
+    Console.Write("");
+    comando = Console.ReadLine();
+
+    string[] cadena = comando.Split();
+
+    if ((cadena[0] + " " + cadena[1]) == "crear database")
     {
-        case 1:                                     //Crear base de datos
-            CrearBD();
-            break;
-
-        case 2:                                     //Borrar base de datos
-            BorrarBD();
-            break;
-
-        case 3:                                     //Mostrar bases de datos
-            MostrarBD();
-            break;
-
-        case 4:                                     //Usar base de datos
-            UsarBD();
-            break;
-
-        case 5:                                     //Finalizar programa
-            break;
-
-        default:
-            Console.Clear();
-            Console.WriteLine("Opción no válida");
-            Console.WriteLine();
-            break;
+        CrearBD(cadena);
     }
-} while (opcion != 5);
+    if ((cadena[0] + " " + cadena[1]) == "borrar database")
+    {
+        BorrarBD(cadena);
+    }
+    if ((cadena[0] + " " + cadena[1]) == "mostrar database")
+    {
+        MostrarBD();
+    }
+    if ((cadena[0] + " " + cadena[1]) == "usar database")
+    {
+        UsarBD(cadena);
+    }
+    
+} while (comando != "cerrar database");
+Console.Clear();
 
-static void CrearBD()                               //Método creación base de datos (carpeta)
+static void CrearBD(string[] cadena)//Método creación base de datos (carpeta).
 {
-    Console.Write("Ingresa el nombre de la base de datos: ");
-    string name = Console.ReadLine();
-
-    string path = Directory.GetCurrentDirectory() + @"\" + name;
+    string path = Directory.GetCurrentDirectory() + @"\db\" + cadena[2];
 
     Console.Clear();
     if (!Directory.Exists(path))
     {
         Directory.CreateDirectory(path);
-        Console.Write("Base de datos " + name + " creada");
+        Console.Write("Base de datos " + cadena[2] + " creada con éxito.");
         Console.ReadLine();
     }
 }
 
-static void BorrarBD(){                             //Método borrar base de datos
+static void BorrarBD(string[] cadena)//Método borrar base de datos.
+{
+    string path = Directory.GetCurrentDirectory() + @"\db\" + cadena[2];
 
+    try
+    {
+        Directory.Delete(path);
+        Console.Clear();
+        Console.Write("Base de datos " + cadena[2] + " borrada con éxito.");
+        Console.ReadKey();
+    }
+    catch (System.IO.DirectoryNotFoundException e)
+    {
+        Console.Clear();
+        Console.Write("No existe la base de datos ingresada.");
+        Console.ReadKey();
+    }
 }
 
-static void MostrarBD(){                            //Método mostrar base de datos
+static void MostrarBD()//Método mostrar base de datos.
+{
+    Console.Clear();
 
+    string path = Directory.GetCurrentDirectory() + @"\db\";
+    DirectoryInfo di = new DirectoryInfo(path);
+    DirectoryInfo[] diArr = di.GetDirectories();
+
+    foreach (DirectoryInfo dri in diArr)
+        Console.WriteLine(dri.Name);
+
+    Console.ReadKey();
 }
 
-static void UsarBD(){                               //Método usar base de datos
+static void UsarBD(string[] cadena)//Método usar base de datos.
+{
+    Console.Clear();
 
+    string pathdb = Directory.GetCurrentDirectory() + @"\db\" + cadena[2] + @"\";
+
+    Console.Write("");
+    string opcion2 = Console.ReadLine();
+    string[] cadena2 = opcion2.Split();
+
+    if ((cadena2[0] + " " + cadena2[1]) == "crear tabla")
+    {
+        crearTabla(pathdb, cadena, cadena2, filas);
+    }
+    if ((cadena2[0] + " " + cadena2[1]) == "mostrar tablas")
+    {
+
+    }
+    if ((cadena2[0] + " " + cadena2[1]) == "mostrar campo x tabla y")
+    {
+
+    }
+    if ((cadena2[0] + " " + cadena2[1]) == "eliminar tabla")
+    {
+
+    }
+}
+
+static void crearTabla(string pathdb, string[] cadena, string[] cadena2)
+{
+    Console.Clear();
+
+    if (true)
+    {
+
+    }
+    else
+    {
+
+        //List<Formato> filas = new List<Formato>();
+        WriteT.WriteToTXT(pathdb + cadena2[2] + ".txt", filas);
+    }
+
+
+
+
+    Console.Write("");
+    string fila = Console.ReadLine();
+    string[] contenido = fila.Split();
+
+    filas.Add(new Formato(contenido[0], contenido[1], contenido[2]));
+    WriteT.WriteToTXT(pathdb + cadena2[2] + ".txt", filas);
+    Console.Clear();
+
+
+    Console.Write("Datos guardados con éxito.");
+    Console.ReadKey();
+}
+class Formato
+{
+    public string nombreT { get; set; }
+    public string tipoT { get; set; }
+    public string longT { get; set; }
+
+    public override string ToString()
+    {
+        return String.Format("{0}|{1}|{2}", nombreT, tipoT, longT);
+    }
+    public Formato(string n, string t, string l)
+    {
+        this.nombreT = n;
+        this.tipoT = t;
+        this.longT = l;
+    }
+}
+class WriteT
+{
+    public static void WriteToTXT(string pathdb, List<Formato> filas)
+    {
+        StreamWriter txtOut = new StreamWriter(
+        new FileStream(pathdb, FileMode.Append, FileAccess.Write));
+        foreach (Formato p in filas)
+        {
+            txtOut.WriteLine("{0}|{1}|{2}", p.nombreT, p.tipoT, p.longT);
+        }
+        txtOut.Close();
+    }
+    public static List<Formato> ReadFromTXT(string pathdb)
+    {
+        List<Formato> filas = new List<Formato>();
+        StreamReader txtIn = new StreamReader(new FileStream(pathdb, FileMode.Open, FileAccess.Read));
+        while (txtIn.Peek() != -1)
+        {
+            string line = txtIn.ReadLine();
+            string[] Columnas = line.Split('|');
+
+            Formato p = new Formato(Columnas[0], Columnas[1], Columnas[2]);
+            filas.Add(p);
+        }
+        return filas;
+    }
 }
