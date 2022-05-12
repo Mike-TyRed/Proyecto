@@ -6,26 +6,86 @@ do
 
     Console.Write("");
     comando = Console.ReadLine();
-
     string[] cadena = comando.Split();
 
-    if ((cadena[0] + " " + cadena[1]) == "crear database")
+    if ((cadena[0] + " " + cadena[1]) == "crear base")
     {
         CrearBD(cadena);
     }
-    if ((cadena[0] + " " + cadena[1]) == "borrar database")
+    if ((cadena[0] + " " + cadena[1]) == "borrar base")
     {
         BorrarBD(cadena);
     }
-    if ((cadena[0] + " " + cadena[1]) == "mostrar database")
+    if ((cadena[0] + " " + cadena[1]) == "mostrar base")
     {
         MostrarBD();
     }
-    if ((cadena[0] + " " + cadena[1]) == "usar database")
+    if ((cadena[0] + " " + cadena[1]) == "usar base")
     {
-        UsarBD(cadena);
+        Console.Clear();
+        Console.Write("Usando db: " + cadena[2]);
+        Console.ReadKey();
+        Console.Clear();
+
+        string path = Directory.GetCurrentDirectory() + @"\db\" + cadena[2] + @"\";
+
+        Console.Write("");
+        string opcion2 = Console.ReadLine();
+        string[] cadena2 = opcion2.Split();
+        string c0, c1, c2;
+
+        if ((cadena2[0] + " " + cadena2[1]) == "crear tabla")
+        {
+            if (File.Exists(cadena[2]))
+            {
+                Console.Write("Ya existe una tabla con el nombre ingresado.");
+                Console.ReadKey();
+            }
+            else
+            {
+                string pathtbl = path + cadena2[2] + ".est";
+                Console.Clear();
+                WriteT.WriteToTXT(pathtbl, filas); //Crea archivo de texto
+
+                Console.Write(" ");
+                string comando3 = Console.ReadLine();
+                string[] cd = comando3.Split();
+
+                do
+                {
+                    c0 = cd[0];
+                    c1 = cd[1];
+                    c2 = cd[2];
+
+                    filas.Add(new Formato(c0, c1, c2));
+                    WriteT.WriteToTXT(pathtbl, filas);
+                    Console.Clear();
+
+                    Console.Write("Tabla creada exitosamente.");
+                    Console.ReadKey();
+
+                    Console.Write(" ");
+                    comando3 = Console.ReadLine();
+                    cd = comando3.Split();
+
+                } while (comando3 != "cerrar tabla");
+            }
+
+        }
+        if ((cadena2[0] + " " + cadena2[1]) == "mostrar tablas")
+        {
+
+        }
+        if ((cadena2[0] + " " + cadena2[1]) == "mostrar campo x tabla y")
+        {
+
+        }
+        if ((cadena2[0] + " " + cadena2[1]) == "eliminar tabla")
+        {
+
+        }
     }
-    
+
 } while (comando != "cerrar database");
 Console.Clear();
 
@@ -77,7 +137,7 @@ static void MostrarBD()//Método mostrar base de datos.
 
 static void UsarBD(string[] cadena)//Método usar base de datos.
 {
-    Console.Clear();
+    /* Console.Clear();
 
     string pathdb = Directory.GetCurrentDirectory() + @"\db\" + cadena[2] + @"\";
 
@@ -87,7 +147,7 @@ static void UsarBD(string[] cadena)//Método usar base de datos.
 
     if ((cadena2[0] + " " + cadena2[1]) == "crear tabla")
     {
-        crearTabla(pathdb, cadena, cadena2, filas);
+        crearTabla(pathdb, cadena, cadena2);
     }
     if ((cadena2[0] + " " + cadena2[1]) == "mostrar tablas")
     {
@@ -100,27 +160,14 @@ static void UsarBD(string[] cadena)//Método usar base de datos.
     if ((cadena2[0] + " " + cadena2[1]) == "eliminar tabla")
     {
 
-    }
+    } */
 }
 
 static void crearTabla(string pathdb, string[] cadena, string[] cadena2)
 {
-    Console.Clear();
-
-    if (true)
-    {
-
-    }
-    else
-    {
-
-        //List<Formato> filas = new List<Formato>();
-        WriteT.WriteToTXT(pathdb + cadena2[2] + ".txt", filas);
-    }
-
-
-
-
+    /* Console.Clear();
+    List<Formato> filas = new List<Formato>();
+    WriteT.WriteToTXT(pathdb + cadena2[2] + ".txt", filas);
     Console.Write("");
     string fila = Console.ReadLine();
     string[] contenido = fila.Split();
@@ -129,9 +176,8 @@ static void crearTabla(string pathdb, string[] cadena, string[] cadena2)
     WriteT.WriteToTXT(pathdb + cadena2[2] + ".txt", filas);
     Console.Clear();
 
-
     Console.Write("Datos guardados con éxito.");
-    Console.ReadKey();
+    Console.ReadKey(); */
 }
 class Formato
 {
