@@ -49,5 +49,7 @@ donde nombre campo = dato;
 
 25 puntos en total.
 
-Un archivo con el nombre de la tabla y extensión dat y  extensión est. 
-(dat de datos y est de estructura).
+Cuando se ejecute esta instrucción, se deberá crear dentro del directorio o carpeta con el nombre
+de la base de datos a la cual se le dio la instrucción de Usa base, un archivo con el nombre de la
+tabla y extensión dat y otro de igual manera con la extensión est. (dat de datos y est de
+estructura).

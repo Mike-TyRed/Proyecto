@@ -17,7 +17,6 @@ C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\simubd.exe
 C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\simubd.deps.json
 C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\simubd.runtimeconfig.json
 C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\simubd.dll
-C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\ref\simubd.dll
 C:\Users\Mike\Documents\GitHub\simuadb\bin\Debug\net6.0\simubd.pdb
 C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\simubd.csproj.AssemblyReference.cache
 C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\simubd.GeneratedMSBuildEditorConfig.editorconfig
@@ -28,3 +27,4 @@ C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\simubd.dll
 C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\ref\simubd.dll
 C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\simubd.pdb
 C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\simubd.genruntimeconfig.cache
+C:\Users\Mike\Documents\GitHub\simuadb\obj\Debug\net6.0\refint\simubd.dll

@@ -1,0 +1,3 @@
+|nombre|varchar|15|
+|edad|int|0|
+|email|varchar|20|
