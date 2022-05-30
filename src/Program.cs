@@ -1,27 +1,33 @@
-﻿string comando = "";
+string comando = "";
 do
 {
     Console.Clear();
     List<FormatoEst> filas = new List<FormatoEst>();
-    //List<Tabla> filass = new List<Tabla>();
 
     Console.Write("");
     comando = Console.ReadLine();
     string[] cadena = comando.Split();
     Console.Clear();
 
+    //1.- Crea nombre base;         1pt
     if ((cadena[0] + " " + cadena[1]) == "crear base")
     {
         CrearBD(cadena);
     }
+    
+    //2.- Borra base nombre base;   1pt
     if ((cadena[0] + " " + cadena[1]) == "borrar base")
     {
         BorrarBD(cadena);
     }
+    
+    //3.- Muestra bases;            1pt
     if ((cadena[0] + " " + cadena[1]) == "mostrar bases")
     {
         MostrarBD();
     }
+    
+    //4.- Usa base nombre base;     1pt
     if ((cadena[0] + " " + cadena[1]) == "usar base")
     {
         Console.Write("Usando db: " + cadena[2]);
@@ -39,6 +45,7 @@ do
 
         do
         {
+            //5.- Crear tabla nombre tabla; 3pts
             if ((cadena2[0] + " " + cadena2[1]) == "crear tabla")
             {
                 if (File.Exists(cadena[2]))
@@ -76,6 +83,7 @@ do
                 Console.ReadKey();
             }
 
+            //6.- Muestra tablas;           1pt
             if ((cadena2[0] + " " + cadena2[1]) == "mostrar tablas")
             {
                 DirectoryInfo di = new DirectoryInfo(path);
@@ -88,6 +96,7 @@ do
                 Console.ReadKey();
             }
 
+            //7.- Borra tabla nombre tabla; 1pt
             if ((cadena2[0] + " " + cadena2[1]) == "eliminar tabla")
             {
                 string pathe = path + cadena2[2] + ".est";
@@ -97,8 +106,74 @@ do
                 File.Delete(pathd);
             }
 
-            if ((cadena2[0] + " " + cadena2[1]) == "borrar campo" /*nombre tabla*/) { }
+            //8.- Borra (campo) (nombre tabla, nombre campo    2pts
+            if ((cadena2[0] + " " + cadena2[1]) == "borrar campo" /*nombre tabla*/)
+            {
+                /* string pathdat = path + cadena2[2] + ".dat";
+                string pathtemp = path + cadena2[2] + "temp.dat";
+                StreamReader lectura;
+                StreamWriter escribir;
+                string cd,
+                    campo;
+                bool encontrado;
+                encontrado = false;
+                int saltos = 0;
+                //int cp = 0;
+                string pathest = path + cadena2[3] + ".est";//Contar las filas
+                using (StreamReader sr = new StreamReader(pathest))
+                {
+                    string s;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        if (s == "|")
+                        {
+                            saltos++;
+                        }
+                    } while (s != null);
+                }
 
+                string[] campos = new string[saltos];
+                char[] separador = {'|'};
+                try 
+                {
+                    lectura = File.OpenText(pathdat);
+                    escribir = File.CreateText(pathtemp);
+                    campo = cadena2[6];
+                    cd = lectura.ReadLine();
+                    while (cadena != null)
+                    {
+                        campos=cd.Split(separador);
+                        if (campos[0].Trim().Equals(campo))
+                        {
+                            encontrado=true;
+                        }
+                        else
+                        {
+                            escribir.WriteLine(cd);
+                        }
+                        cd = lectura.ReadLine();
+                    }
+                    if (encontrado==false)
+                    {
+                        Console.WriteLine("Campo no encontrado.");
+                        Console.ReadKey();
+                    }
+                    lectura.Close();
+                    escribir.Close();
+                }
+                catch (FileNotFoundException fe)
+                {
+                    Console.WriteLine("!Error¡" + fe.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("!Error¡" + e.Message);
+                }
+                Console.ReadKey(true); */
+            }
+
+            //9.- Agrega campo nombre tabla;    2pts
             if ((cadena2[0] + " " + cadena2[1]) == "agrega campo" /*nombre tabla*/)
             {
                 string pathtbl = path + cadena2[2] + ".est";
@@ -114,6 +189,7 @@ do
                 WriteEst.WriteToEst(pathtbl, filas);
             }
 
+            //10.- Inserta en nombre tabla; 2pts
             if ((cadena2[0] + " " + cadena2[1]) == "inserta en" /*nombre tabla*/)
             {
                 string pathdat = path + cadena2[2] + ".dat";
@@ -130,16 +206,89 @@ do
                             for (int i = 0; i < cd.Length; i++)
                             {
                                 string l = cd[i];
-                                sw.Write(l + "|");
+                                sw.Write(l + " ");
                             }
+                            sw.Write("|");
                             sw.WriteLine();
                         }
                     }
                 } while (campo != ";");
             }
 
-            if ((cadena2[0] + " " + cadena2[1]) == "elimina en" /*nombre tabla donde nombre campo = dato*/) { }
-            if ((cadena2[0] + " " + cadena2[1]) == "modifica en" /*(nombre tabla) (nombre campo) = dato*/) { }
+            //11.- Elimina en (nombre tabla) donde (nombre campo) = (dato);   2pts
+            if ((cadena2[0] + cadena2[1]) == "elimina en" /*nombre tabla donde nombre campo = dato*/) 
+            { 
+                /* string pathdat = path + cadena2[2] + ".dat";
+                string pathtemp = path + cadena2[2] + "temp.dat";
+                StreamReader lectura;
+                StreamWriter escribir;
+                string cd,
+                    campo;
+                bool encontrado;
+                encontrado = false;
+                int saltos = 0;
+                //int cp = 0;
+                string pathest = path + cadena2[3] + ".est";//Contar las filas
+                using (StreamReader sr = new StreamReader(pathest))
+                {
+                    string s;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        if (s == "|")
+                        {
+                            saltos++;
+                        }
+                    } while (s != null);
+                }
+
+                string[] campos = new string[saltos];
+                char[] separador = {'|'};
+                try 
+                {
+                    lectura = File.OpenText(pathdat);
+                    escribir = File.CreateText(pathtemp);
+                    campo = cadena2[6];
+                    cd = lectura.ReadLine();
+                    while (cadena != null)
+                    {
+                        campos=cd.Split(separador);
+                        if (campos[0].Trim().Equals(campo))
+                        {
+                            encontrado=true;
+                        }
+                        else
+                        {
+                            escribir.WriteLine(cd);
+                        }
+                        cd = lectura.ReadLine();
+                    }
+                    if (encontrado==false)
+                    {
+                        Console.WriteLine("Campo no encontrado.");
+                        Console.ReadKey();
+                    }
+                    lectura.Close();
+                    escribir.Close();
+                }
+                catch (FileNotFoundException fe)
+                {
+                    Console.WriteLine("!Error¡" + fe.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("!Error¡" + e.Message);
+                }
+                Console.ReadKey(true); */
+            }
+
+            //12.- Modifica en nombre tabla 2pts
+            if ((cadena2[0] + " " + cadena2[1]) == "modifica en" /*(nombre tabla) (nombre campo) = dato*/) 
+            { 
+
+            }
+
+            //13.- Lista * de nombre tabla; 1pt
             if ((cadena2[0] + " " + cadena2[1]) == "lista *" /*de nombre tabla*/)
             {
                 string pathdat = path + cadena2[2] + ".dat";
@@ -155,9 +304,176 @@ do
                 }
             }
 
-            if ((cadena2[0] + " " + cadena2[1]) == "lista campo1, campoN, de nombre tabla") { }
-            if ((cadena2[0] + " " + cadena2[1])== "lista * de nombre tabla donde nombre campo = dato") { }
-            if ((cadena2[0] + " " + cadena2[1]) == "lista campo1, campoN de nombre tabla") { }
+            //14.- Lista (campo1), (campoN) de (nombre tabla)   1pt
+            if ((cadena2[0]) == "lista")
+            {
+                /* string pathdat = path + cadena2[3] + ".dat";
+                int saltos = 0, cp = 0;
+                string pathest = path + cadena2[3] + ".est";//Contar las filas
+                using (StreamReader sr = new StreamReader(pathest))
+                {
+                    string s;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        if (s == "|")
+                        {
+                            saltos++;
+                        }
+                        if (s != cadena[1])
+                        {
+                            cp++;
+                        }
+                    } while (s != null);
+                }
+                using (StreamReader sr = new StreamReader(pathdat))
+                {
+                    string s;
+                    int x;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        string[] cd = s.Split();
+                        
+                    } while (s != null);
+                    Console.ReadKey();
+                } */
+            }
+            
+            //15.- Lista * de nombre tabla donde nombre campo = dato;   2pts
+            if ((cadena2[0] + " " + cadena2[1]) == "lista * de nombre tabla donde nombre campo = dato") 
+            { 
+               /*  string pathdat = path + cadena2[3] + ".dat";
+                StreamReader lectura;
+                string cd,
+                    campo;
+                bool encontrado;
+                encontrado = false;
+                int saltos = 0;
+                int cp = 0;
+                string pathest = path + cadena2[3] + ".est";//Contar las filas
+                using (StreamReader sr = new StreamReader(pathest))
+                {
+                    string s;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        if (s == "|")
+                        {
+                            saltos++;
+                        }
+                        if (s != cadena[1])
+                        {
+                            cp++;
+                        }
+                    } while (s != null);
+                }
+
+                string[] campos = new string[saltos];
+                char[] separador = {' '};
+                try 
+                {
+                    lectura = File.OpenText(pathdat);
+                    campo = cadena2[cp];
+                    cd = lectura.ReadLine();
+                    while (cadena != null && encontrado == false)
+                    {
+                        campos=cd.Split(separador);
+                        if (campos[0].Trim().Equals(campo))
+                        {
+                            Console.WriteLine(campos[0].Trim());
+                            encontrado=true;
+                        }
+                        else
+                        {
+                            cd = lectura.ReadLine();
+                        }
+                    }
+                    if (encontrado==false)
+                    {
+                        Console.WriteLine("Campo no encontrado.");
+                        Console.ReadKey();
+                    }
+                    lectura.Close();
+                }
+                catch (FileNotFoundException fe)
+                {
+                    Console.WriteLine("!Error¡" + fe.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("!Error¡" + e.Message);
+                }
+                Console.ReadKey(true); */
+            }
+            
+            //16.- Lista (campo1), (campoN) de nombre tabla donde nombre campo = dato; 2pts
+            if ((cadena2[0] + " " + cadena2[1]) == "Lista campo1,campo2,…, campoN de nombre tabla donde nombre campo = dato") 
+            { 
+               /*  string pathdat = path + cadena2[3] + ".dat";
+                StreamReader lectura;
+                string cd,
+                    campo;
+                bool encontrado;
+                encontrado = false;
+                int saltos = 0;
+                int cp = 0;
+                string pathest = path + cadena2[3] + ".est";//Contar las filas
+                using (StreamReader sr = new StreamReader(pathest))
+                {
+                    string s;
+                    do
+                    {
+                        s = sr.ReadLine();
+                        if (s == "|")
+                        {
+                            saltos++;
+                        }
+                        if (s != cadena[1])
+                        {
+                            cp++;
+                        }
+                    } while (s != null);
+                }
+
+                string[] campos = new string[saltos];
+                char[] separador = {' '};
+                try 
+                {
+                    lectura = File.OpenText(pathdat);
+                    campo = cadena2[cp];
+                    cd = lectura.ReadLine();
+                    while (cadena != null && encontrado == false)
+                    {
+                        campos=cd.Split(separador);
+                        if (campos[0].Trim().Equals(campo))
+                        {
+                            Console.WriteLine(campos[0].Trim());
+                            encontrado=true;
+                        }
+                        else
+                        {
+                            cd = lectura.ReadLine();
+                        }
+                    }
+                    if (encontrado==false)
+                    {
+                        Console.WriteLine("Campo no encontrado.");
+                        Console.ReadKey();
+                    }
+                    lectura.Close();
+                }
+                catch (FileNotFoundException fe)
+                {
+                    Console.WriteLine("!Error¡" + fe.Message);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("!Error¡" + e.Message);
+                }
+                Console.ReadKey(true); */
+            }
+            
             Console.Clear();
             Console.Write("");
             opcion2 = Console.ReadLine();
@@ -212,7 +528,6 @@ static void MostrarBD() //Método mostrar base de datos.
 
     Console.ReadKey();
 }
-
 class FormatoEst
 {
     public string nombreT { get; set; }
@@ -221,7 +536,7 @@ class FormatoEst
 
     public override string ToString()
     {
-        return String.Format("|{0}|{1}|{2}|", nombreT, tipoT, longT);
+        return String.Format("{0} {1} {2}|", nombreT, tipoT, longT);
     }
 
     public FormatoEst(string n, string t, string l)
@@ -241,7 +556,7 @@ class WriteEst
         );
         foreach (FormatoEst p in filas)
         {
-            txtOut.WriteLine("|{0}|{1}|{2}|", p.nombreT, p.tipoT, p.longT);
+            txtOut.WriteLine("{0} {1} {2}|", p.nombreT, p.tipoT, p.longT);
         }
         txtOut.Close();
     }
@@ -255,7 +570,7 @@ class WriteEst
         while (txtIn.Peek() != -1)
         {
             string line = txtIn.ReadLine();
-            string[] Columnas = line.Split('|');
+            string[] Columnas = line.Split(' ');
 
             FormatoEst p = new FormatoEst(Columnas[0], Columnas[1], Columnas[2]);
             filas.Add(p);
